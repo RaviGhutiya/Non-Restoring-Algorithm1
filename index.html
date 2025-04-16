@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Non-Restoring Division Algorithm</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Non-Restoring Division Algorithm</h1>
+
+  <!-- Bit Selection Dropdown -->
+  <label for="bit-select">Select Bit Size:</label>
+  <select id="bit-select">
+    <option value="4">4-bit</option>
+    <option value="8">8-bit</option>
+  </select>
+
+  <!-- Input for Dividend -->
+  <label for="dividend">Enter Dividend (Binary):</label>
+  <input type="text" id="dividend" maxlength="8" placeholder="e.g., 1100" />
+  <button onclick="enterDivisor()">Next</button>
+
+  <!-- Input for Divisor -->
+  <div id="divisor-section" style="display:none;">
+    <label for="divisor">Enter Divisor (Binary):</label>
+    <input type="text" id="divisor" maxlength="8" placeholder="e.g., 1010" />
+    <button onclick="runNonRestoringDivision()">Run Algorithm</button>
+  </div>
+
+  <!-- Example Info -->
+  <h2>Example</h2>
+  <div class="example-box">
+    <p><strong>Example:</strong> 4-bit: Dividend = 1100, Divisor = 1010</p>
+    <p>8-bit: Dividend = 00001100, Divisor = 00001010</p>
+  </div>
+  
+  <!-- Output Table -->
+  <h2>Results</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Step</th>
+        <th>Accumulator (A)</th>
+        <th>Quotient (Q)</th>
+        <th>Operation</th>
+      </tr>
+    </thead>
+    <tbody id="output"></tbody>
+  </table>
+  
+  <!-- Final Result Output -->
+  <h3 id="final-result"></h3>
+
+  <!-- Reveal Divisor Input on Click -->
+  <script>
+    function enterDivisor() {
+      const bitSize = document.getElementById('bit-select').value;
+      document.getElementById('dividend').maxLength = bitSize;
+      document.getElementById('divisor').maxLength = bitSize;
+      document.getElementById('divisor-section').style.display = 'block';
+    }
+  </script>
+
+  <!-- Algorithm Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
